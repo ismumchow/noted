@@ -1,5 +1,3 @@
-// pages/p/[id].tsx
-
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import ReactMarkdown from 'react-markdown';
@@ -54,10 +52,12 @@ const Post: React.FC<PostProps> = (props) => {
 
   return (
     <Layout>
-      <div>
-        <h2>{title}</h2>
-        <p>By {props?.author?.name || 'Unknown author'}</p>
-        <ReactMarkdown children={props.content} />
+      <div className='border-2 p-3 bg-white rounded-lg'>
+        <h2 className='text-3xl p-3'>{title}</h2>
+        <p className='p-3'>By {props?.author?.name || 'Unknown author'}</p>
+        <div className='p-3'> 
+         <ReactMarkdown children={props.content} />
+        </div>
         {!props.published && userHasValidSession && postBelongsToUser && 
         (
           <button onClick={() => publishPost(props.id)}>Publish</button>
